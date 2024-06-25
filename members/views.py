@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from rest_framework import viewsets, permissions
+from .models import ProjectMember
+from .serializers import ProjectMemberSerializer
 
-# Create your views here.
+class ProjectMemberViewSet(viewsets.ModelViewSet):
+    queryset = ProjectMember.objects.all()
+    serializer_class = ProjectMemberSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
