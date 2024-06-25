@@ -1,10 +1,21 @@
-# from django.urls import path
-# from .views import RegisterUserView, LoginUserView, UserDetailsView, UpdateUserView, DeleteUserView
-#
-# urlpatterns = [
-#     path('register/', RegisterUserView.as_view(), name='register'),
-#     path('login/', LoginUserView.as_view(), name='login'),
-#     path('<int:id>/', UserDetailsView.as_view(), name='user_details'),
-#     path('<int:id>/update/', UpdateUserView.as_view(), name='update_user'),
-#     path('<int:id>/delete/', DeleteUserView.as_view(), name='delete_user'),
-# ]
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+    TokenVerifyView,
+)
+
+from users.views import UserViewSet, TestView
+from token_views import CustomTokenObtainPairView, CustomTokenRefreshView
+
+router = DefaultRouter()
+router.register(r'users', UserViewSet, basename='user')
+
+urlpatterns = [
+    path('token/', CustomTokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('token/refresh/', CustomTokenRefreshView.as_view(), name='token_refresh'),
+    path('token/verify/', TokenVerifyView.as_view(), name='token_verify'),
+    path('', include(router.urls)),
+    path('test/', TestView.as_view(), name='test'),
+]
