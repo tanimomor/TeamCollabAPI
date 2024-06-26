@@ -6,7 +6,7 @@ from rest_framework_simplejwt.views import (
     TokenVerifyView,
 )
 
-from users.views import UserViewSet, TestView
+from users.views import UserViewSet
 from .token_views import CustomTokenObtainPairView, CustomTokenRefreshView
 
 router = DefaultRouter()
@@ -16,6 +16,5 @@ urlpatterns = [
     path('token/', CustomTokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', CustomTokenRefreshView.as_view(), name='token_refresh'),
     path('token/verify/', TokenVerifyView.as_view(), name='token_verify'),
-    path('', include(router.urls)),
-    path('test/', TestView.as_view(), name='test'),
+    path('api/', include(router.urls))
 ]

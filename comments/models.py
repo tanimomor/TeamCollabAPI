@@ -2,6 +2,7 @@ from django.db import models
 from users.models import User
 from tasks.models import Task
 
+
 class Comment(models.Model):
     id = models.AutoField(primary_key=True)
     content = models.TextField()

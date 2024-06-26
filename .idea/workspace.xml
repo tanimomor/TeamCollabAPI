@@ -5,7 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5ef94571-80f4-4d4b-a1da-c5e2f77e06e0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/comments/permissions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/members/permissions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tasks/permissions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/teamcollab/permissions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/permissions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comments/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/comments/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comments/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/comments/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comments/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/comments/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comments/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/comments/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/members/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/members/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/members/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/members/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/members/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/members/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/projects/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/projects/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/projects/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/projects/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tasks/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/tasks/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tasks/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/tasks/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tasks/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/tasks/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamcollab/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/teamcollab/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,20 +55,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/tanimo/Documents/Backend/django-jwt",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/tanimo/Documents/Backend/django-jwt&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="teamcollab" type="Python.DjangoServer" factoryName="Django server">
       <module name="teamcollab" />
@@ -90,7 +114,10 @@
       <workItem from="1719164167295" duration="680000" />
       <workItem from="1719227018026" duration="871000" />
       <workItem from="1719285858614" duration="399000" />
-      <workItem from="1719286342455" duration="17493000" />
+      <workItem from="1719286342455" duration="33434000" />
+      <workItem from="1719352664920" duration="9477000" />
+      <workItem from="1719369992689" duration="2379000" />
+      <workItem from="1719401275912" duration="3639000" />
     </task>
     <servers />
   </component>
