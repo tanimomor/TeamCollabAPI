@@ -2,10 +2,12 @@ from rest_framework import serializers
 from .models import Task
 from datetime import datetime
 
+
 class TaskSerializer(serializers.ModelSerializer):
     class Meta:
         model = Task
-        fields = ['id', 'title', 'description', 'status', 'priority', 'assigned_to', 'project', 'created_at', 'due_date']
+        fields = ['id', 'title', 'description', 'status', 'priority', 'assigned_to', 'project', 'created_at',
+                  'due_date']
 
     title = serializers.CharField(
         max_length=100,

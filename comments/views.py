@@ -1,4 +1,7 @@
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets, permissions
+
+from .filters import CommentFilter
 from .models import Comment, Task
 from .serializers import CommentSerializer
 from .permissions import IsAdminOrAssignedForComment
@@ -10,6 +13,8 @@ class CommentViewSet(viewsets.ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
     permission_classes = [permissions.IsAuthenticated, IsAdminOrAssignedForComment]
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = CommentFilter
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)

@@ -1,6 +1,8 @@
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets, permissions
 
 from members.models import ProjectMember
+from .filters import TaskFilter
 from .models import Task
 from .permissions import IsAdminForProject
 from .serializers import TaskSerializer
@@ -11,6 +13,8 @@ class TaskViewSet(viewsets.ModelViewSet):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
     permission_classes = [permissions.IsAuthenticated, IsAdminForProject]
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = TaskFilter
 
     def get_queryset(self):
         user = self.request.user

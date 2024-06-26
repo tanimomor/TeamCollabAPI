@@ -1,0 +1,3755 @@
+{
+	"info": {
+		"_postman_id": "28b6bb27-9722-4695-a76b-64a671489a2c",
+		"name": "TeamCollab",
+		"description": "Welcome to the API documentation for managing collaborative projects and tasks. This collection of endpoints provides robust functionality to handle project creation, task assignment and tracking, user management, and collaborative commenting. Whether you're organizing projects, assigning tasks, managing user roles, or facilitating communication through comments, these endpoints offer powerful tools to streamline your collaborative workflows.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32102738",
+		"_collection_link": "https://www.postman.com/aviation-cosmologist-32513541/workspace/teamcollab/collection/32102738-28b6bb27-9722-4695-a76b-64a671489a2c?action=share&source=collection_link&creator=32102738"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Registration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"Kutush\",\n    \"email\": \"kutush.pro@example.com\",\n    \"password\": \"Kutush1234@\",\n    \"first_name\": \"Kutush\",\n    \"last_name\": \"Cat\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}/api/users/register/",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"register",
+								""
+							]
+						},
+						"description": "Registers a new user with the system.\n\n- **username** (required, string): The username for the new user. Must be between 4 and 150 characters.\n    \n- **email** (required, string): The email address of the new user.\n    \n- **password** (required, string): The password for the new user. Must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character (`@$!%\\\\\\\\*?&`).\n    \n- **first_name** (optional, string): The first name of the new user.\n    \n- **last_name** (optional, string): The last name of the new user.\n    \n\n#### Notes\n\n- Password validation ensures strong security measures are met.\n    \n- User details are validated and saved upon successful registration.\n    \n- Tokens (`refresh` and `access`) are provided for subsequent authenticated requests."
+					},
+					"response": [
+						{
+							"name": "Registration",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"Kutush\",\n    \"email\": \"kutush.pro@example.com\",\n    \"password\": \"Kutush1234@\",\n    \"first_name\": \"Kutush\",\n    \"last_name\": \"Cat\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/users/register/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"users",
+										"register",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jun 2024 14:19:17 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "633"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"User registered successfully\",\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcxOTQ5Nzk1NywiaWF0IjoxNzE5NDExNTU3LCJqdGkiOiI2ZmI3ZWI0N2IzNDI0ODJhYmE3YmRlODYwMDVjODE5OSIsInVzZXJfaWQiOjZ9.SStDSSY8eWRjeVy7mMyOLbpLeIzGx3d1DUtfSlOw4A8\",\n    \"access\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIwMjc1NTU3LCJpYXQiOjE3MTk0MTE1NTcsImp0aSI6ImY5YzJiNzlmM2E4YjRiM2Y5MzY0MDk1ODNlN2FkZTY1IiwidXNlcl9pZCI6Nn0.MOVrQQrmCBdKoJHZy1LxdJW6OP6dOKa6dOqb9A31xis\",\n    \"user\": {\n        \"id\": 6,\n        \"username\": \"Kutush\",\n        \"email\": \"kutush.pro@example.com\",\n        \"first_name\": \"Kutush\",\n        \"last_name\": \"Cat\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if(pm.response.code === 200) {",
+									"    pm.environment.set('token', pm.response.json().access);",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"maria_garcia\",\n    \"password\": \"GarciaPass@123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}/api/users/login/",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"login",
+								""
+							]
+						},
+						"description": "Logs in an existing user and provides authentication tokens.\n\n- **username** (required, string): The username of the existing user.\n    \n- **password** (required, string): The password associated with the username.\n    \n\n#### Responses\n\n- **200 OK** - Successful login. Returns user details and authentication tokens.\n    \n- **400 Bad Request** - If invalid credentials are provided.\n    \n\n#### Notes\n\n- Authentication tokens (`refresh` and `access`) are provided upon successful login.\n    \n- Tokens should be used for subsequent authenticated requests.\n    \n- Provides user details for client-side reference after successful login."
+					},
+					"response": [
+						{
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"maria_garcia\",\n    \"password\": \"GarciaPass@123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/users/login/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"users",
+										"login",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jun 2024 15:27:16 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "631"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Login successful\",\n    \"user\": {\n        \"id\": 3,\n        \"username\": \"maria_garcia\",\n        \"email\": \"maria.garcia@example.com\",\n        \"first_name\": \"Maria\",\n        \"last_name\": \"Garcia\"\n    },\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcxOTUwMjAzNiwiaWF0IjoxNzE5NDE1NjM2LCJqdGkiOiIyNzI2Y2QxYTU0ZTQ0MjM1OGYyOGFiOTU2NWY3MGQ1MiIsInVzZXJfaWQiOjN9.RsYWZgJa6Ic19w27Eiwp9Q_WyZjM12L-9qTc3JWdWAg\",\n    \"access\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIwMjc5NjM2LCJpYXQiOjE3MTk0MTU2MzYsImp0aSI6IjBmMTIyYzM5NTE0MzRkZTQ4N2IxMjFhMmM3M2E4NzE4IiwidXNlcl9pZCI6M30.tRifa2c8VXtHphC91qIs7yvFhSFgdKfhp0jwSS1xesc\"\n}"
+						}
+					]
+				},
+				{
+					"name": "List Users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_user2}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Base_Url}}/api/users/",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								""
+							]
+						},
+						"description": "Retrieves a list of all users registered in the system.\n\n#### Responses\n\n- **200 OK** - Successful retrieval of user list.\n    \n- **401 Unauthorized** - If the request lacks valid authentication credentials.\n    \n\n#### Notes\n\n- Requires authentication for access to user information.\n    \n- Returns a JSON array of user objects with their basic details.\n    \n- Each user object includes `id`, `username`, `email`, `first_name`, and `last_name`."
+					},
+					"response": [
+						{
+							"name": "List Users",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/users/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"users",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jun 2024 15:27:24 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "533"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"username\": \"jane_smithx\",\n        \"email\": \"jane.smith@example.com\",\n        \"first_name\": \"Jane\",\n        \"last_name\": \"Smith\"\n    },\n    {\n        \"id\": 2,\n        \"username\": \"jane_smith\",\n        \"email\": \"jane.smith@example.com\",\n        \"first_name\": \"Jane\",\n        \"last_name\": \"Smith\"\n    },\n    {\n        \"id\": 3,\n        \"username\": \"maria_garcia\",\n        \"email\": \"maria.garcia@example.com\",\n        \"first_name\": \"Maria\",\n        \"last_name\": \"Garcia\"\n    },\n    {\n        \"id\": 5,\n        \"username\": \"Tanim Omor\",\n        \"email\": \"tanim.pro@example.com\",\n        \"first_name\": \"Tanim\",\n        \"last_name\": \"Omor\"\n    },\n    {\n        \"id\": 6,\n        \"username\": \"Kutush\",\n        \"email\": \"kutush.pro@example.com\",\n        \"first_name\": \"Kutush\",\n        \"last_name\": \"Cat\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "List Users With Filters",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Base_Url}}/api/users/?username=Tanim%20Omor&email=tanim.pro@example.com&first_name=Tanim&last_name=Omor\n",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								""
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "Tanim%20Omor"
+								},
+								{
+									"key": "email",
+									"value": "tanim.pro@example.com"
+								},
+								{
+									"key": "first_name",
+									"value": "Tanim"
+								},
+								{
+									"key": "last_name",
+									"value": "Omor\n"
+								}
+							]
+						},
+						"description": "Retrieves a list of all users registered in the system based on query parameter.\n\n#### Responses\n\n- **200 OK** - Successful retrieval of user list.\n    \n- **401 Unauthorized** - If the request lacks valid authentication credentials.\n    \n\n#### Notes\n\n- Requires authentication for access to user information.\n    \n- Returns a JSON array of user objects with their basic details.\n    \n- Each user object includes `id`, `username`, `email`, `first_name`, and `last_name`."
+					},
+					"response": [
+						{
+							"name": "List Users With Filters",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/users/?username=Tanim%20Omor&email=tanim.pro@example.com&first_name=Tanim&last_name=Omor\n",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"users",
+										""
+									],
+									"query": [
+										{
+											"key": "username",
+											"value": "Tanim%20Omor"
+										},
+										{
+											"key": "email",
+											"value": "tanim.pro@example.com"
+										},
+										{
+											"key": "first_name",
+											"value": "Tanim"
+										},
+										{
+											"key": "last_name",
+											"value": "Omor\n"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jun 2024 15:27:31 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "106"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 5,\n        \"username\": \"Tanim Omor\",\n        \"email\": \"tanim.pro@example.com\",\n        \"first_name\": \"Tanim\",\n        \"last_name\": \"Omor\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Retrieve User",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}/api/users/1",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"1"
+							]
+						},
+						"description": "Retrieve details of a specific user by their ID.\n\n### Supported Methods\n\n- **GET**: Retrieve details of the user.\n    \n\n### Authentication\n\n- Authentication is required to access this endpoint.\n    \n\n### Path Parameters\n\n- **user_id** (integer): The unique ID of the user to retrieve.\n    \n\n### Response\n\n- Returns a JSON object with details of the user, including:\n    \n    - **id**: User ID\n        \n    - **username**: Username\n        \n    - **email**: Email address\n        \n    - **first_name**: First name\n        \n    - **last_name**: Last name\n        \n\n### Status Codes\n\n- **200 OK**: Successful retrieval of user details.\n    \n- **404 Not Found**: If the user with the specified ID does not exist."
+					},
+					"response": [
+						{
+							"name": "Retrieve User",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/users/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"users",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jun 2024 15:27:45 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "106"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"username\": \"jane_smithx\",\n    \"email\": \"jane.smith@example.com\",\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Smith\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 2,\n    \"username\": \"jane_smithx\",\n    \"password\": \"AnotherStrongPassword@123\",\n    \"email\": \"jane.smith@example.com\",\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Smith\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}/api/users/1/",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"1",
+								""
+							]
+						},
+						"description": "Update details of an existing user identified by their ID using the PUT method. The PUT method requires the entire user object to be provided, as it will replace the existing user details with the new details provided.\n\n### Supported Methods\n\n- **PUT**: Replace the details of the user with the provided information.\n    \n\n### Authentication\n\n- Authentication is required to access this endpoint.\n    \n\n### Path Parameters\n\n- **user_id** (integer): The unique ID of the user to update.\n    \n\n### Request Body\n\n- The request body should contain a JSON object with all the fields of the user, as this will completely replace the existing user object.\n    \n- Required fields:\n    \n    - **username** (string): Username (min length: 4, max length: 150)\n        \n    - **email** (string): Email address (must be a valid email)\n        \n    - **password** (string): Password (write-only, min length: 8, must meet complexity requirements)\n        \n    - **first_name** (string): First name\n        \n    - **last_name** (string): Last name\n        \n\n### Response\n\n- Returns a JSON object with updated details of the user.\n    \n\n### Status Codes\n\n- **200 OK**: Successful update of user details.\n    \n- **400 Bad Request**: If the request body is invalid.\n    \n- **404 Not Found**: If the user with the specified ID does not exist.\n    \n\n### Notes\n\n- The PUT method will replace the entire user object with the provided details. Ensure that all fields are included in the request body to avoid unintended data loss."
+					},
+					"response": [
+						{
+							"name": "Update User",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": 2,\n    \"username\": \"jane_smithx\",\n    \"password\": \"AnotherStrongPassword@123\",\n    \"email\": \"jane.smith@example.com\",\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Smith\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/users/1/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"users",
+										"1",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jun 2024 14:30:01 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "106"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"username\": \"jane_smithx\",\n    \"email\": \"jane.smith@example.com\",\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Smith\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Partially Update User",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"last_name\": \"Doey\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}/api/users/1/",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"1",
+								""
+							]
+						},
+						"description": "Partially update details of an existing user identified by their ID using the PATCH method. The PATCH method allows updating one or more fields without affecting the entire user object.\n\n### Supported Methods\n\n- **PATCH**: Partially update the details of the user with the provided information.\n    \n\n### Authentication\n\n- Authentication is required to access this endpoint.\n    \n\n### Path Parameters\n\n- **user_id** (integer): The unique ID of the user to update.\n    \n\n### Request Body\n\n- The request body should contain a JSON object with the fields that need to be updated.\n    \n- Fields that can be updated:\n    \n    - **username** (string): Username (min length: 4, max length: 150)\n        \n    - **email** (string): Email address (must be a valid email)\n        \n    - **password** (string): Password (write-only, min length: 8, must meet complexity requirements)\n        \n    - **first_name** (string): First name\n        \n    - **last_name** (string): Last name\n        \n\n### Response\n\n- Returns a JSON object with updated details of the user.\n    \n\n### Status Codes\n\n- **200 OK**: Successful update of user details.\n    \n- **400 Bad Request**: If the request body is invalid.\n    \n- **404 Not Found**: If the user with the specified ID does not exist.\n    \n\n### Notes\n\n- The PATCH method allows partial updates, so only the fields that need to be changed should be included in the request body.\n    \n- Ensure that the provided data is valid and adheres to any validation rules defined for the user model."
+					},
+					"response": [
+						{
+							"name": "Partially Update User",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"last_name\": \"Doey\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Base_Url}}/api/users/1/",
+									"host": [
+										"{{Base_Url}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"1",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jun 2024 15:30:56 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "105"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"username\": \"jane_smithx\",\n    \"email\": \"jane.smith@example.com\",\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Doey\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcxOTUwMjU4NSwiaWF0IjoxNzE5NDE2MTg1LCJqdGkiOiI4Y2MxMzc1MWI1YTM0YzIwOWY1NjEyMTRlZjNhM2IzNiIsInVzZXJfaWQiOjd9.eXjxXf4G66d5nF_PZXrTi6v0KU5I_Qij4dzCGbiVpPk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/users/login/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users",
+								"login",
+								""
+							]
+						},
+						"description": "Delete an existing user identified by their ID using the DELETE method.\n\n### Supported Methods\n\n- **DELETE**: Remove the user from the system.\n    \n\n### Authentication\n\n- Authentication is required to access this endpoint.\n    \n\n### Path Parameters\n\n- **user_id** (integer): The unique ID of the user to delete.\n    \n\n### Response\n\n- Returns a status message indicating whether the deletion was successful.\n    \n\n### Status Codes\n\n- **204 No Content**: Successful deletion of the user. No content is returned in the response body.\n    \n- **404 Not Found**: If the user with the specified ID does not exist.\n    \n- **403 Forbidden**: If the user does not have permission to delete the resource.\n    \n\n### Notes\n\n- Deleting a user will remove all data associated with that user from the system.\n    \n- Ensure that the user has the necessary permissions to perform the delete operation."
+					},
+					"response": [
+						{
+							"name": "Delete User",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIwMjgwMzI5LCJpYXQiOjE3MTk0MTYzMjksImp0aSI6IjA1NDM2NDhiYWUxNjQ2ZmJhOWRjZDMzZjMxMzc4MjQwIiwidXNlcl9pZCI6N30.HgdvAV7MjXI6IITLbVoVXRBn3dprHcA49HVAqoEInXc",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/users/7/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"users",
+										"7",
+										""
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jun 2024 15:39:22 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.3"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			],
+			"description": "This collection includes endpoints for user management operations such as user registration, authentication, retrieval, update, and deletion.",
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIwMjIzMDkxLCJpYXQiOjE3MTkzNTkwOTEsImp0aSI6IjA5YzczZjk0YjQ3YTQ3Y2NhZTk0NWNhNTY2Y2Q3ZmRmIiwidXNlcl9pZCI6MX0.U7BQkttyZ8DZCnJvoiLTq392hBcRv4h9ldWEBRVKIvk",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Projects",
+			"item": [
+				{
+					"name": "List Projects",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Base_Url}}/api/projects/",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"api",
+								"projects",
+								""
+							]
+						},
+						"description": "The Projects endpoint allows you to retrieve a list of projects, create new projects, and manage existing projects.\n\n#### Supported Methods\n\n- **GET**: Retrieve a list of projects.\n    \n- **POST**: Create a new project.\n    \n- **PUT/PATCH**: Update an existing project.\n    \n- **DELETE**: Delete a project.\n    \n\n#### Authentication\n\nAuthentication is required to access this endpoint.\n\n#### Notes\n\n- **GET**: Retrieve a list of projects you have access to.\n    \n- **POST**: Create a new project. The authenticated user is automatically assigned as the owner and an admin.\n    \n- **PUT/PATCH**: Update the details of an existing project.\n    \n- **DELETE**: Remove a project from the system."
+					},
+					"response": [
+						{
+							"name": "List Projects",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Base_Url}}/api/projects/",
+									"host": [
+										"{{Base_Url}}"
+									],
+									"path": [
+										"api",
+										"projects",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jun 2024 15:39:33 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "331"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"Project Alpha By Doe\",\n        \"description\": \"This is the first project focusing on web development.\",\n        \"owner\": 1,\n        \"created_at\": \"2024-06-26T00:05:28.168709Z\"\n    },\n    {\n        \"id\": 2,\n        \"name\": \"Project Beta\",\n        \"description\": \"This is the second project aimed at creating a mobile application.\",\n        \"owner\": 2,\n        \"created_at\": \"2024-06-26T00:12:34.349915Z\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Filters",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Project Alpha\",\n    \"description\": \"This is the first project focusing on web development.\",\n    \"start_date\": \"2024-07-01\",\n    \"end_date\": \"2024-12-31\",\n    \"status\": \"In Progress\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/projects/?name=Project%20Beta&description=mobile&owner=2&created_at=2024-06-26T00:12:34.349915Z",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"projects",
+								""
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Project%20Beta"
+								},
+								{
+									"key": "description",
+									"value": "mobile"
+								},
+								{
+									"key": "owner",
+									"value": "2"
+								},
+								{
+									"key": "created_at",
+									"value": "2024-06-26T00:12:34.349915Z"
+								}
+							]
+						},
+						"description": "The Projects endpoint allows you to retrieve a list of projects with optional filtering capabilities.\n\n#### Supported Methods\n\n- **GET**: Retrieve a list of projects with optional filters.\n    \n\n#### Authentication\n\nAuthentication is required to access this endpoint.\n\n#### Query Parameters\n\n- `name`: Filters projects by name.\n    \n- `description`: Filters projects by description.\n    \n- `owner`: Filters projects by owner (user ID).\n    \n- `created_at`: Filters projects by creation date and time.\n    \n\n#### Response\n\nReturns a JSON array of project objects matching the specified filters."
+					},
+					"response": [
+						{
+							"name": "Filters",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Project Alpha\",\n    \"description\": \"This is the first project focusing on web development.\",\n    \"start_date\": \"2024-07-01\",\n    \"end_date\": \"2024-12-31\",\n    \"status\": \"In Progress\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/projects/?name=Project%20Beta&description=mobile&owner=2&created_at=2024-06-26T00:12:34.349915Z",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"projects",
+										""
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Project%20Beta"
+										},
+										{
+											"key": "description",
+											"value": "mobile"
+										},
+										{
+											"key": "owner",
+											"value": "2"
+										},
+										{
+											"key": "created_at",
+											"value": "2024-06-26T00:12:34.349915Z"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jun 2024 15:39:45 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "168"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 2,\n        \"name\": \"Project Beta\",\n        \"description\": \"This is the second project aimed at creating a mobile application.\",\n        \"owner\": 2,\n        \"created_at\": \"2024-06-26T00:12:34.349915Z\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Create New Project",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_user2}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Project Beta\",\n    \"description\": \"This is the second project aimed at creating a mobile application.\",\n    \"start_date\": \"2024-06-01\",\n    \"end_date\": \"2024-11-30\",\n    \"status\": \"Not Started\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}/api/projects/",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"api",
+								"projects",
+								""
+							]
+						},
+						"description": "The Create Project endpoint allows you to create a new project.\n\n#### Supported Methods\n\n- **POST**: Create a new project.\n    \n\n#### Authentication\n\nAuthentication is required to access this endpoint.\n\n#### Request Body\n\nThe request body should be a JSON object containing the following fields:\n\n- `name`: (required) The name of the project.\n    \n- `description`: (optional) A description of the project.\n    \n- `owner`: (automatically set) The owner of the project. This is set automatically based on the authenticated user.\n    \n\n#### Response\n\nUpon successful creation, the endpoint returns a JSON object representing the newly created project with the following fields:\n\n- `id`: The unique identifier of the project.\n    \n- `name`: The name of the project.\n    \n- `description`: The description of the project.\n    \n- `owner`: The owner of the project.\n    \n- `created_at`: The timestamp when the project was created."
+					},
+					"response": [
+						{
+							"name": "Create New Project",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Project Beta\",\n    \"description\": \"This is the second project aimed at creating a mobile application.\",\n    \"start_date\": \"2024-06-01\",\n    \"end_date\": \"2024-11-30\",\n    \"status\": \"Not Started\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Base_Url}}/api/projects/",
+									"host": [
+										"{{Base_Url}}"
+									],
+									"path": [
+										"api",
+										"projects",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jun 2024 15:39:56 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "166"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 4,\n    \"name\": \"Project Beta\",\n    \"description\": \"This is the second project aimed at creating a mobile application.\",\n    \"owner\": 2,\n    \"created_at\": \"2024-06-26T15:39:56.731334Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Retrieve",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Base_Url}}/api/projects/1",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"api",
+								"projects",
+								"1"
+							]
+						},
+						"description": "The Retrieve Project endpoint allows you to retrieve details of a specific project by its ID."
+					},
+					"response": [
+						{
+							"name": "Retrieve",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/projects/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"projects",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jun 2024 15:40:10 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "162"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"name\": \"Project Alpha By Doe\",\n    \"description\": \"This is the first project focusing on web development.\",\n    \"owner\": 1,\n    \"created_at\": \"2024-06-26T00:05:28.168709Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_user1}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Project Alpha By Doe\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}/api/projects/1/",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"api",
+								"projects",
+								"1",
+								""
+							]
+						},
+						"description": "The Retrieve Project endpoint allows you to retrieve details of a specific project by its ID.\n\n#### Supported Methods\n\n- **GET**: Retrieve details of a project by its ID.\n    \n\n#### Authentication\n\nAuthentication is required to access this endpoint.\n\n#### URL Parameters\n\n- : (required) The unique identifier of the project to retrieve.\n    \n\n#### Response\n\nUpon successful retrieval, the endpoint returns a JSON object representing the project with the following fields:\n\n- `id`: The unique identifier of the project.\n    \n- `name`: The name of the project.\n    \n- `description`: The description of the project.\n    \n- `owner`: The owner of the project.\n    \n- `created_at`: The timestamp when the project was created."
+					},
+					"response": [
+						{
+							"name": "Update",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Project Alpha By Doe\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/projects/1/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"projects",
+										"1",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jun 2024 15:40:20 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "162"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"name\": \"Project Alpha By Doe\",\n    \"description\": \"This is the first project focusing on web development.\",\n    \"owner\": 1,\n    \"created_at\": \"2024-06-26T00:05:28.168709Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_user3}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{Base_Url}}/api/projects/3/",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"api",
+								"projects",
+								"3",
+								""
+							]
+						},
+						"description": "The Delete Project endpoint allows you to delete a specific project by its ID.\n\n#### Supported Methods\n\n- **DELETE**: Delete a project by its ID.\n    \n\n#### Authentication\n\nAuthentication is required to access this endpoint.\n\n#### URL Parameters\n\n- : (required) The unique identifier of the project to delete.\n    \n\n#### Response\n\n- **204 No Content**: If the project is successfully deleted, no content is returned."
+					},
+					"response": [
+						{
+							"name": "Delete",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/projects/4/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"projects",
+										"4",
+										""
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jun 2024 15:41:02 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.3"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			],
+			"description": "The Project API provides endpoints to manage projects within the system. Users can create, retrieve, update, and delete projects, as well as filter projects based on specific criteria. Each project includes information such as its name, description, owner, and creation date. The endpoints are secured, requiring authentication to access, and permission checks are enforced to ensure users can only perform actions they are authorized for."
+		},
+		{
+			"name": "Project Members",
+			"item": [
+				{
+					"name": "Create Member",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_user1}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"project\": 1,\n    \"user\": 3,\n    \"role\": \"Member\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}/api/members/",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"api",
+								"members",
+								""
+							]
+						},
+						"description": "The Create Member endpoint allows you to add a new member to a project.\n\n**Supported Methods:**\n\n- POST: Create a new member.\n    \n\n**Authentication:**  \nAuthentication is required to access this endpoint.\n\n**Request Body:**  \nThe request body should be a JSON object containing the following fields:\n\n- project: (required) The ID of the project to which the member will be added.\n    \n- user: (required) The ID of the user to be added as a member.\n    \n- role: (required) The role of the member in the project (`Admin` or `Member`).\n    \n\n**Response:**  \nUpon successful creation, the endpoint returns a JSON object representing the newly created project member with the following fields:\n\n- id: The unique identifier of the project member.\n    \n- project: The ID of the project.\n    \n- user: The ID of the user who is a member.\n    \n- role: The role of the member in the project (`Admin` or `Member`)."
+					},
+					"response": [
+						{
+							"name": "Create Member",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"project\": 1,\n    \"user\": 6,\n    \"role\": \"Member\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/members/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"members",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jun 2024 15:46:39 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 15,\n    \"project\": 1,\n    \"user\": 6,\n    \"role\": \"Member\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_user1}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"project\": 1,\n    \"user\": 3,\n    \"role\": \"Admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}/api/members/",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"api",
+								"members",
+								""
+							]
+						},
+						"description": "The Create Member endpoint allows you to add a new member to a project.\n\n**Supported Methods:**\n\n- POST: Create a new member.\n    \n\n**Authentication:**  \nAuthentication is required to access this endpoint.\n\n**Request Body:**  \nThe request body should be a JSON object containing the following fields:\n\n- project: (required) The ID of the project to which the member will be added.\n    \n- user: (required) The ID of the user to be added as a member.\n    \n- role: (required) The role of the member in the project (`Admin` or `Member`).\n    \n\n**Response:**  \nUpon successful creation, the endpoint returns a JSON object representing the newly created project member with the following fields:\n\n- id: The unique identifier of the project member.\n    \n- project: The ID of the project.\n    \n- user: The ID of the user who is a member.\n    \n- role: The role of the member in the project (`Admin` or `Member`)."
+					},
+					"response": [
+						{
+							"name": "Create Admin",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"project\": 1,\n    \"user\": 5,\n    \"role\": \"Admin\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/members/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"members",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jun 2024 15:47:15 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "45"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 16,\n    \"project\": 1,\n    \"user\": 5,\n    \"role\": \"Admin\"\n}"
+						}
+					]
+				},
+				{
+					"name": "List Project Members",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_user1}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Base_Url}}/api/members/",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"api",
+								"members",
+								""
+							]
+						},
+						"description": "The List Members endpoint allows you to retrieve a list of project members.\n\n**Supported Methods:**\n\n- GET: Retrieve a list of project members.\n    \n\n**Authentication:**  \nAuthentication is required to access this endpoint.\n\n**Query Parameters:**  \nThis endpoint supports the following query parameters for filtering:\n\n- project: Filters members by the ID of the project.\n    \n- user: Filters members by the ID of the user.\n    \n- role: Filters members by the role (`Admin` or `Member`).\n    \n\n**Response:**  \nReturns a JSON array of project member objects with the following fields for each member:\n\n- id: The unique identifier of the project member.\n    \n- project: The ID of the project.\n    \n- user: The ID of the user who is a member of the project.\n    \n- role: The role of the member in the project, which can be `Admin` or `Member`."
+					},
+					"response": [
+						{
+							"name": "List Project Members",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/members/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"members",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jun 2024 15:47:27 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "276"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"project\": 1,\n        \"user\": 1,\n        \"role\": \"Admin\"\n    },\n    {\n        \"id\": 2,\n        \"project\": 2,\n        \"user\": 2,\n        \"role\": \"Admin\"\n    },\n    {\n        \"id\": 4,\n        \"project\": 1,\n        \"user\": 2,\n        \"role\": \"Member\"\n    },\n    {\n        \"id\": 13,\n        \"project\": 1,\n        \"user\": 3,\n        \"role\": \"Admin\"\n    },\n    {\n        \"id\": 15,\n        \"project\": 1,\n        \"user\": 6,\n        \"role\": \"Member\"\n    },\n    {\n        \"id\": 16,\n        \"project\": 1,\n        \"user\": 5,\n        \"role\": \"Admin\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Filters",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_user1}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Base_Url}}/api/members/?user=1&project=1&role=Admin",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"api",
+								"members",
+								""
+							],
+							"query": [
+								{
+									"key": "user",
+									"value": "1"
+								},
+								{
+									"key": "project",
+									"value": "1"
+								},
+								{
+									"key": "role",
+									"value": "Admin"
+								}
+							]
+						},
+						"description": "The Filters endpoint for Project Members allows you to retrieve a filtered list of project members based on specified criteria.\n\n**Supported Methods:**\n\n- GET: Retrieve a filtered list of project members.\n    \n\n**Authentication:**  \nAuthentication is required to access this endpoint.\n\n**Query Parameters:**  \nThis endpoint supports the following query parameters for filtering:\n\n- user: Filters project members by the ID of the user.\n    \n- project: Filters project members by the ID of the project.\n    \n- role: Filters project members by the role (`Admin` or `Member`).\n    \n\n**Response:**  \nReturns a JSON array of project member objects matching the specified filters. Each member object contains the following fields:\n\n- id: The unique identifier of the project member.\n    \n- project: The ID of the project.\n    \n- user: The ID of the user who is a member of the project.\n    \n- role: The role of the member in the project, which can be `Admin` or `Member`."
+					},
+					"response": [
+						{
+							"name": "Filters",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/members/?user=1&project=1&role=Admin",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"members",
+										""
+									],
+									"query": [
+										{
+											"key": "user",
+											"value": "1"
+										},
+										{
+											"key": "project",
+											"value": "1"
+										},
+										{
+											"key": "role",
+											"value": "Admin"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jun 2024 15:47:35 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"project\": 1,\n        \"user\": 1,\n        \"role\": \"Admin\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Retrieve",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_user1}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Base_Url}}/api/members/1/",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"api",
+								"members",
+								"1",
+								""
+							]
+						},
+						"description": "The Retrieve Project Member endpoint allows you to retrieve details of a specific project member by their unique identifier (ID).\n\n**Supported Methods:**\n\n- GET: Retrieve details of a specific project member.\n    \n\n**Authentication:**  \nAuthentication is required to access this endpoint.\n\n**Path Parameters:**\n\n- `{member_id}`: The unique identifier of the project member.\n    \n\n**Response:**  \nReturns a JSON object representing the project member with the following fields:\n\n- id: The unique identifier of the project member.\n    \n- project: The ID of the project the member belongs to.\n    \n- user: The ID of the user who is a member of the project.\n    \n- role: The role of the member in the project, which can be `Admin` or `Member`."
+					},
+					"response": [
+						{
+							"name": "Retrieve",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/members/1/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"members",
+										"1",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jun 2024 15:47:44 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "44"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"project\": 1,\n    \"user\": 1,\n    \"role\": \"Admin\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_user1}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"role\": \"Member\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}/api/members/5/",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"api",
+								"members",
+								"5",
+								""
+							]
+						},
+						"description": "The Update Member endpoint allows you to update an existing member's details within a project.\n\n#### Supported Methods\n\n- PATCH: Update specific fields of a member.\n    \n- PUT: Update all fields of a member.\n    \n\n#### Authentication\n\nAuthentication is required to access this endpoint.\n\n#### Request Body\n\nThe request body should be a JSON object containing the fields you want to update:\n\n- project: (optional) The ID of the project the member belongs to.\n    \n- user: (optional) The ID of the user associated with the member.\n    \n- role: (optional) The role of the member in the project."
+					},
+					"response": [
+						{
+							"name": "Update",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"role\": \"Member\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/members/4/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"members",
+										"4",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jun 2024 16:09:34 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "45"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 4,\n    \"project\": 1,\n    \"user\": 2,\n    \"role\": \"Member\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_user1}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{Base_Url}}/api/members/5/",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"api",
+								"members",
+								"5",
+								""
+							]
+						},
+						"description": "The Delete Member endpoint allows you to remove a member from a project.\n\n#### Supported Methods\n\n- DELETE: Remove a member from the project.\n    \n\n#### Authentication\n\nAuthentication is required to access this endpoint.\n\n#### Response\n\nUpon successful deletion, the endpoint returns a status code indicating that the member has been successfully removed."
+					},
+					"response": [
+						{
+							"name": "Delete",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/members/4/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"members",
+										"4",
+										""
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jun 2024 16:10:23 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.3"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			],
+			"description": "The Project Member app manages the association between users and projects, defining their roles within each project. It includes features for creating, updating, and retrieving project memberships, ensuring efficient collaboration and management within teams.\n\n3.5"
+		},
+		{
+			"name": "Tasks",
+			"item": [
+				{
+					"name": "List Tasks",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_user3}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Base_Url}}/api/tasks/",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"api",
+								"tasks",
+								""
+							]
+						},
+						"description": "The List Tasks endpoint allows you to retrieve a list of tasks based on your project memberships and assigned roles.\n\n**Supported Methods:**\n\n- **GET:** Retrieve a list of tasks.\n    \n\n**Authentication:**  \nAuthentication is required to access this endpoint.\n\n**Query Parameters:**\n\n- **title:** Filters tasks by title.\n    \n- **status:** Filters tasks by status (e.g., \"To Do\", \"In Progress\", \"Done\").\n    \n- **priority:** Filters tasks by priority level (e.g., \"Low\", \"Medium\", \"High\").\n    \n- **assigned_to:** Filters tasks by the user assigned to the task.\n    \n- **project:** Filters tasks by project ID.\n    \n- **due_date:** Filters tasks by due date. Supports exact date, year greater than, and year less than comparisons.\n    \n\n**Response:**  \nReturns a JSON array of task objects matching the specified filters."
+					},
+					"response": [
+						{
+							"name": "List Tasks",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/tasks/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"tasks",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jun 2024 16:10:46 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "707"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"title\": \"Design Homepage\",\n        \"description\": \"Create the initial design for the homepage\",\n        \"status\": \"To Do\",\n        \"priority\": \"High\",\n        \"assigned_to\": 2,\n        \"project\": 1,\n        \"created_at\": \"2024-06-26T02:59:40.468293Z\",\n        \"due_date\": \"2024-07-15T00:00:00Z\"\n    },\n    {\n        \"id\": 2,\n        \"title\": \"Implement Authentication\",\n        \"description\": \"Set up user authentication with JWT\",\n        \"status\": \"In Progress\",\n        \"priority\": \"Medium\",\n        \"assigned_to\": 3,\n        \"project\": 1,\n        \"created_at\": \"2024-06-26T02:59:58.182318Z\",\n        \"due_date\": \"2024-07-20T00:00:00Z\"\n    },\n    {\n        \"id\": 3,\n        \"title\": \"Write Unit Tests\",\n        \"description\": \"Write unit tests for the user models\",\n        \"status\": \"To Do\",\n        \"priority\": \"Low\",\n        \"assigned_to\": 2,\n        \"project\": 1,\n        \"created_at\": \"2024-06-26T03:01:43.223048Z\",\n        \"due_date\": \"2024-07-25T00:00:00Z\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Filters",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_user3}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Base_Url}}/api/tasks/?title=Implement%20Authentication&status=In%20Progress&priority=Medium&assigned_to=3&project=1&due_date=2024-07-20",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"api",
+								"tasks",
+								""
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "Implement%20Authentication"
+								},
+								{
+									"key": "status",
+									"value": "In%20Progress"
+								},
+								{
+									"key": "priority",
+									"value": "Medium"
+								},
+								{
+									"key": "assigned_to",
+									"value": "3"
+								},
+								{
+									"key": "project",
+									"value": "1"
+								},
+								{
+									"key": "due_date",
+									"value": "2024-07-20"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Filters",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/tasks/?title=Implement%20Authentication&status=In%20Progress&priority=Medium&assigned_to=3&project=1&due_date=2024-07-20",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"tasks",
+										""
+									],
+									"query": [
+										{
+											"key": "title",
+											"value": "Implement%20Authentication"
+										},
+										{
+											"key": "status",
+											"value": "In%20Progress"
+										},
+										{
+											"key": "priority",
+											"value": "Medium"
+										},
+										{
+											"key": "assigned_to",
+											"value": "3"
+										},
+										{
+											"key": "project",
+											"value": "1"
+										},
+										{
+											"key": "due_date",
+											"value": "2024-07-20"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jun 2024 16:10:57 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "245"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 2,\n        \"title\": \"Implement Authentication\",\n        \"description\": \"Set up user authentication with JWT\",\n        \"status\": \"In Progress\",\n        \"priority\": \"Medium\",\n        \"assigned_to\": 3,\n        \"project\": 1,\n        \"created_at\": \"2024-06-26T02:59:58.182318Z\",\n        \"due_date\": \"2024-07-20T00:00:00Z\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Create Task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_user1}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Implement Logout\",\n    \"description\": \"Set up user logout with JWT\",\n    \"status\": \"In Progress\",\n    \"priority\": \"Medium\",\n    \"assigned_to\": 3,\n    \"project\": 1,\n    \"due_date\": \"2024-07-20T00:00:00Z\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}/api/tasks/",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"api",
+								"tasks",
+								""
+							]
+						},
+						"description": "The Create Task endpoint allows project admins to add new tasks to their projects.\n\n**Supported Methods:**\n\n- **POST:** Create a new task.\n    \n\n**Authentication:**  \nAuthentication as a project owner is required to access this endpoint.\n\n**Request Body:**  \nThe request body should be a JSON object containing the following fields:\n\n- **title:** (required) The title of the task.\n    \n- **description:** (optional) Description of the task.\n    \n- **status:** (required) Current status of the task (e.g., \"To Do\", \"In Progress\", \"Done\").\n    \n- **priority:** (required) Priority level of the task (e.g., \"Low\", \"Medium\", \"High\").\n    \n- **assigned_to:** (optional) User assigned to the task.\n    \n- **project:** (required) ID of the project to which the task belongs.\n    \n- **due_date:** (required) Due date for completing the task."
+					},
+					"response": [
+						{
+							"name": "Create Task",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Implement Logout\",\n    \"description\": \"Set up user logout with JWT\",\n    \"status\": \"In Progress\",\n    \"priority\": \"Medium\",\n    \"assigned_to\": 3,\n    \"project\": 1,\n    \"due_date\": \"2024-07-20T00:00:00Z\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/tasks/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"tasks",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jun 2024 16:11:19 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "227"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 5,\n    \"title\": \"Implement Logout\",\n    \"description\": \"Set up user logout with JWT\",\n    \"status\": \"In Progress\",\n    \"priority\": \"Medium\",\n    \"assigned_to\": 3,\n    \"project\": 1,\n    \"created_at\": \"2024-06-26T16:11:19.526004Z\",\n    \"due_date\": \"2024-07-20T00:00:00Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Retrieve",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_user2}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Base_Url}}/api/tasks/3/",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"api",
+								"tasks",
+								"3",
+								""
+							]
+						},
+						"description": "The Retrieve Task endpoint allows you to fetch details of a specific task by its unique identifier.\n\n**Supported Methods:**\n\n- **GET:** Retrieve details of a task.\n    \n\n**Authentication:**  \nAuthentication is required to access this endpoint.\n\n**Path Parameters:**\n\n- **task_id:** (integer) The unique identifier of the task to retrieve.\n    \n\n**Response:**  \nUpon successful retrieval, the endpoint returns a JSON object representing the task with fields including:\n\n- **id:** The unique identifier of the task.\n    \n- **title:** The title of the task.\n    \n- **description:** Description of the task.\n    \n- **status:** Current status of the task.\n    \n- **priority:** Priority level of the task.\n    \n- **assigned_to:** User assigned to the task (if any).\n    \n- **project:** ID of the project to which the task belongs.\n    \n- **created_at:** Timestamp when the task was created.\n    \n- **due_date:** Due date for completing the task."
+					},
+					"response": [
+						{
+							"name": "Retrieve",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/tasks/5/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"tasks",
+										"5",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jun 2024 16:13:58 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "227"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 5,\n    \"title\": \"Implement Logout\",\n    \"description\": \"Set up user logout with JWT\",\n    \"status\": \"In Progress\",\n    \"priority\": \"Medium\",\n    \"assigned_to\": 3,\n    \"project\": 1,\n    \"created_at\": \"2024-06-26T16:11:19.526004Z\",\n    \"due_date\": \"2024-07-20T00:00:00Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Task",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{Base_Url}}/api/tasks/4/",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"api",
+								"tasks",
+								"4",
+								""
+							]
+						},
+						"description": "The Delete Task endpoint allows you to delete a specific task by its unique identifier.\n\n**Supported Methods:**\n\n- **DELETE:** Delete a task.\n    \n\n**Authentication:**  \nAuthentication is required to access this endpoint.\n\n**Path Parameters:**\n\n- **task_id:** (integer) The unique identifier of the task to delete.\n    \n\n**Response:**  \nUpon successful deletion, the endpoint returns a status code 204 (No Content), indicating that the task has been successfully deleted."
+					},
+					"response": [
+						{
+							"name": "Delete Task",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/tasks/5/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"tasks",
+										"5",
+										""
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jun 2024 16:14:15 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.3"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			],
+			"description": "The Task Management endpoint allows users to manage tasks within projects, providing operations for creating, retrieving, updating, and deleting tasks based on project membership roles. It supports filtering tasks by attributes such as title, status, priority, assigned user, project, and due date."
+		},
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_user2}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Base_Url}}/api/comments/",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"api",
+								"comments",
+								""
+							]
+						},
+						"description": "This endpoint allows you to retrieve a list of comments with optional filtering capabilities.\n\n**Supported Methods**\n\n- GET: Retrieves a list of comments.\n    \n\n**Authentication**\n\n- Authentication is required to access this endpoint.\n    \n\n**Query Parameters**\n\n- `content`: Filters comments by content (case-insensitive search).\n    \n- `user`: Filters comments by user ID.\n    \n- `task`: Filters comments by task ID.\n    \n- `created_at`: Filters comments by creation date (supports exact match, year greater than (`year__gt`), and year less than (`year__lt`) comparisons).\n    \n\n**Response**\n\n- Returns a JSON array of comment objects matching the specified filters."
+					},
+					"response": [
+						{
+							"name": "List",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/comments/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"comments",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jun 2024 16:15:06 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "299"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"content\": \"Need some reviews.\",\n        \"user\": 2,\n        \"task\": 1,\n        \"created_at\": \"2024-06-26T12:32:54.635362Z\"\n    },\n    {\n        \"id\": 2,\n        \"content\": \"Almost done.\",\n        \"user\": 2,\n        \"task\": 1,\n        \"created_at\": \"2024-06-26T12:33:20.106672Z\"\n    },\n    {\n        \"id\": 3,\n        \"content\": \"Having some issues.\",\n        \"user\": 3,\n        \"task\": 1,\n        \"created_at\": \"2024-06-26T12:35:41.252446Z\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Filters",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_user2}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Base_Url}}/api/comments/?task=1&user=3&content=Having%20some%20issues.",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"api",
+								"comments",
+								""
+							],
+							"query": [
+								{
+									"key": "task",
+									"value": "1"
+								},
+								{
+									"key": "user",
+									"value": "3"
+								},
+								{
+									"key": "content",
+									"value": "Having%20some%20issues."
+								}
+							]
+						},
+						"description": "This list endpoint allows you to retrieve comments based on specified filters.\n\n**Supported Filters**\n\n- `task`: Filters comments by task ID.\n    \n- `user`: Filters comments by user ID.\n    \n- `content`: Filters comments by content.\n    \n\n**Response**\n\n- Returns a JSON array of comment objects that match the specified filters."
+					},
+					"response": [
+						{
+							"name": "Filters",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/comments/?task=1&user=3&content=Having%20some%20issues.",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"comments",
+										""
+									],
+									"query": [
+										{
+											"key": "task",
+											"value": "1"
+										},
+										{
+											"key": "user",
+											"value": "3"
+										},
+										{
+											"key": "content",
+											"value": "Having%20some%20issues."
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jun 2024 16:15:21 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "103"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 3,\n        \"content\": \"Having some issues.\",\n        \"user\": 3,\n        \"task\": 1,\n        \"created_at\": \"2024-06-26T12:35:41.252446Z\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Create Comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_user3}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content\": \"Having some issues.\",\n    \"task\": 1\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}/api/comments/",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"api",
+								"comments",
+								""
+							]
+						},
+						"description": "This endpoint allows you to create a new comment.\n\n**Supported Methods**\n\n- POST: Create a new comment.\n    \n\n**Authentication**\n\n- Authentication is required to access this endpoint.\n    \n\n**Request Body**  \nThe request body should be a JSON object containing the following fields:\n\n- `content`: (required) The content of the comment.\n    \n- `task`: (required) The ID of the task this comment relates to.\n    \n\n**Response**  \nUpon successful creation, the endpoint returns a JSON object representing the newly created comment with the following fields:\n\n- `id`: The unique identifier of the comment.\n    \n- `content`: The content of the comment.\n    \n- `user`: The user who created the comment.\n    \n- `task`: The task ID associated with the comment.\n    \n- `created_at`: The timestamp when the comment was created."
+					},
+					"response": [
+						{
+							"name": "Create Comment",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"content\": \"Having some issues.\",\n    \"task\": 1\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/comments/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"comments",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jun 2024 16:15:42 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "101"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 4,\n    \"content\": \"Having some issues.\",\n    \"user\": 3,\n    \"task\": 1,\n    \"created_at\": \"2024-06-26T16:15:42.130487Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Retrieve",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Base_Url}}/api/comments/1/",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"api",
+								"comments",
+								"1",
+								""
+							]
+						},
+						"description": "This endpoint allows you to retrieve a specific comment by its ID.\n\n**Supported Methods**\n\n- GET: Retrieve a specific comment.\n    \n\n**Authentication**\n\n- Authentication is required to access this endpoint.\n    \n\n**Response**  \nUpon successful retrieval, the endpoint returns a JSON object representing the comment with the following fields:\n\n- `id`: The unique identifier of the comment.\n    \n- `content`: The content of the comment.\n    \n- `user`: The user who created the comment.\n    \n- `task`: The task ID associated with the comment.\n    \n- `created_at`: The timestamp when the comment was created."
+					},
+					"response": [
+						{
+							"name": "Retrieve",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/comments/4/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"comments",
+										"4",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jun 2024 16:16:09 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "101"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 4,\n    \"content\": \"Having some issues.\",\n    \"user\": 3,\n    \"task\": 1,\n    \"created_at\": \"2024-06-26T16:15:42.130487Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_user2}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content\": \"Need some reviews.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}/api/comments/1/",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"api",
+								"comments",
+								"1",
+								""
+							]
+						},
+						"description": "Update an existing comment identified by its ID.\n\n#### Supported Methods\n\n- PATCH: Update an existing comment.\n    \n\n#### Authentication\n\nAuthentication is required to access this endpoint.\n\n#### Request Body\n\nThe request body should be a JSON object containing the fields to be updated:\n\n- content: (required) The updated content of the comment.\n    \n\n#### Response\n\nUpon successful update, the endpoint returns a JSON object representing the updated comment with the following fields:\n\n- id: The unique identifier of the comment.\n    \n- content: The updated content of the comment.\n    \n- user: The user who created the comment.\n    \n- task: The task ID associated with the comment.\n    \n- created_at: The timestamp when the comment was created.\n    \n\nAdjust `http://127.0.0.1:8000` to your actual API base URL where the endpoint is hosted."
+					},
+					"response": [
+						{
+							"name": "Update",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"content\": \"Need some reviews.\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/comments/1/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"comments",
+										"1",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jun 2024 16:16:39 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "100"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"content\": \"Need some reviews.\",\n    \"user\": 2,\n    \"task\": 1,\n    \"created_at\": \"2024-06-26T12:32:54.635362Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_user3}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_Url}}/api/comments/5/",
+							"host": [
+								"{{Base_Url}}"
+							],
+							"path": [
+								"api",
+								"comments",
+								"5",
+								""
+							]
+						},
+						"description": "Delete an existing comment identified by its ID.\n\n#### Supported Methods\n\n- DELETE: Delete an existing comment.\n    \n\n#### Authentication\n\nAuthentication is required to access this endpoint.\n\n#### Response\n\nUpon successful deletion, the endpoint returns a status code `204 No Content`.\n\nAdjust `http://127.0.0.1:8000` to your actual API base URL where the endpoint is hosted."
+					},
+					"response": [
+						{
+							"name": "Delete",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/comments/5/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"comments",
+										"5",
+										""
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jun 2024 16:19:26 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.12.3"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			],
+			"description": "The Comments endpoint allows users to manage comments associated with tasks. Users can list, retrieve, create, update, and delete comments based on their permissions within the associated projects and tasks.\n\nThis endpoint ensures that comments are securely managed and accessible only to authorized users, enhancing collaboration and task management within projects."
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIwMjIzMDkxLCJpYXQiOjE3MTkzNTkwOTEsImp0aSI6IjA5YzczZjk0YjQ3YTQ3Y2NhZTk0NWNhNTY2Y2Q3ZmRmIiwidXNlcl9pZCI6MX0.U7BQkttyZ8DZCnJvoiLTq392hBcRv4h9ldWEBRVKIvk",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
