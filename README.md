@@ -1,4 +1,4 @@
-# TeamCollab
+# TeamCollabAPI
 #### This project aims to facilitate team collaboration through a suite of APIs for managing projects, tasks, users, and comments. It provides a robust platform for teams to organize and track their work efficiently.
 ####
 This application require Python 3.9 or higher and Django 5.0.6 along with djangorestframework 3.15.2
